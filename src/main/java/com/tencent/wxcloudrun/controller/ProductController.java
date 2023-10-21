@@ -39,7 +39,7 @@ public class ProductController {
    * @return API response json
    */
   @GetMapping(value = "/api/list")
-  ApiResponse getList() {
+  ApiResponse get() {
     logger.info("/api/product list get request");
     List<Product> list = productService.getList();
     return ApiResponse.ok(list);
@@ -52,7 +52,7 @@ public class ProductController {
    */
   @GetMapping(value = "/api/product")
   ApiResponse getProduct(@RequestBody ProductRequest request) {
-    logger.info("/api/product get request");
+    logger.info("/api/product get request",request.getBarCode());
     Optional<Product> product = productService.getProduct(request.getBarCode());
 
     return ApiResponse.ok(product);
