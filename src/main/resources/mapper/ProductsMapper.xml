@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tencent.wxcloudrun.dao.ProductsMapper">
+
+    <resultMap id="productsMapper" type="com.tencent.wxcloudrun.model.Product">
+        <id property="barCode" column="barCode"/>
+        <result property="name" column="name"/>
+        <result property="psn" column="psn"/>
+    </resultMap>
+
+    <select id="getProduct" resultMap="productsMapper" parameterType="java.lang.String">
+        SELECT `bar_code`, `name`, `psn`
+        FROM Products
+        WHERE bar_code = #{id}
+    </select>
+
+    <select id="getList" resultType="com.tencent.wxcloudrun.model.Product">
+        SELECT `bar_code`, `name`, `psn`
+        FROM Products
+    </select>
+
+
+</mapper>
