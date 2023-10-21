@@ -50,9 +50,9 @@ public class ProductController {
    * @param request
    * @return
    */
-  @GetMapping(value = "/api/product")
+  @PostMapping(value = "/api/product")
   ApiResponse getProduct(@RequestBody ProductRequest request) {
-    logger.info("/api/product get request",request.getBarCode());
+    logger.info("/api/product post request",request.getBarCode());
     Optional<Product> product = productService.getProduct(request.getBarCode());
 
     return ApiResponse.ok(product);
