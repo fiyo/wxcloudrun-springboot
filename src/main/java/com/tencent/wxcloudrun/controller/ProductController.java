@@ -2,8 +2,10 @@ package com.tencent.wxcloudrun.controller;
 
 import com.tencent.wxcloudrun.config.ApiResponse;
 import com.tencent.wxcloudrun.dto.CounterRequest;
+import com.tencent.wxcloudrun.dto.MakeProductRequest;
 import com.tencent.wxcloudrun.dto.ProductRequest;
 import com.tencent.wxcloudrun.model.Counter;
+import com.tencent.wxcloudrun.model.MakeProduct;
 import com.tencent.wxcloudrun.model.Product;
 import com.tencent.wxcloudrun.model.QrCode;
 import com.tencent.wxcloudrun.service.CounterService;
@@ -88,6 +90,30 @@ public class ProductController {
       }else{
         return ApiResponse.error("条形码或者一物一码不正确！");
       }
+    }
+  }
+
+  @PostMapping(value = "/api/makeproduct")
+  ApiResponse makeproduct(@RequestBody MakeProductRequest request) {
+    logger.info("/api/makeproduct post request",request.getMakeCount());
+    String barCode = request.getBarCode();
+    String name = request.getName();
+    String makeCount = request.getMakeCount();
+    String makeHalfCount = request.getMakeHalfCount();
+    String backCount = request.getBackCount();
+
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+    MakeProduct makeProduct = new MakeProduct();
+    makeProduct.setMakeDate(sdf.format(new Date(System.currentTimeMillis())));
+    makeProduct.setBarCode(barCode);
+    makeProduct.setName(name);
+    makeProduct.setMakeCount(makeCount);
+    makeProduct.setMakeHalfCount(makeHalfCount);
+    makeProduct.setBackCount(backCount);
+    productService.saveMakeProduct(makeProduct);
+
+    return ApiResponse.ok(makeProduct);
+
     }
   }
 

@@ -3,6 +3,7 @@ package com.tencent.wxcloudrun.service.impl;
 import com.tencent.wxcloudrun.dao.CountersMapper;
 import com.tencent.wxcloudrun.dao.ProductsMapper;
 import com.tencent.wxcloudrun.model.Counter;
+import com.tencent.wxcloudrun.model.MakeProduct;
 import com.tencent.wxcloudrun.model.Product;
 import com.tencent.wxcloudrun.model.QrCode;
 import com.tencent.wxcloudrun.service.CounterService;
@@ -35,5 +36,10 @@ public class ProductServiceImpl implements ProductService {
   @Override
   public void bind(QrCode qrCode) {
     productsMapper.bind(qrCode);
+  }
+
+  @Override
+  public void saveMakeProduct(MakeProduct makeProduct) {
+    productsMapper.saveMakeProduct(makeProduct);
   }
 }
