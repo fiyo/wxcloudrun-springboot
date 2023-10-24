@@ -16,4 +16,5 @@ public class MakeProduct  implements Serializable {
     private String makeCount;
     private String makeHalfCount;
     private String backCount;
+    private String remark;
 }

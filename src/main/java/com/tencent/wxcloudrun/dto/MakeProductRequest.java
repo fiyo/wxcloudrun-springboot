@@ -13,4 +13,5 @@ public class MakeProductRequest {
     private String makeCount;
     private String makeHalfCount;
     private String backCount;
+    private String remark;
 }

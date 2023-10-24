@@ -101,6 +101,7 @@ public class ProductController {
     String makeCount = request.getMakeCount();
     String makeHalfCount = request.getMakeHalfCount();
     String backCount = request.getBackCount();
+    String remark = request.getRemark();
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
     MakeProduct makeProduct = new MakeProduct();
@@ -110,6 +111,7 @@ public class ProductController {
     makeProduct.setMakeCount(makeCount);
     makeProduct.setMakeHalfCount(makeHalfCount);
     makeProduct.setBackCount(backCount);
+    makeProduct.setRemark(remark);
     productService.saveMakeProduct(makeProduct);
 
     return ApiResponse.ok(makeProduct);
