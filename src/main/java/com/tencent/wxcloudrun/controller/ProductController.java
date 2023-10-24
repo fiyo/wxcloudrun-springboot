@@ -78,7 +78,7 @@ public class ProductController {
       return ApiResponse.error("条形码和一物一码均不可为空！");
     }else {
       if(request.getBarCode().length() == 13 && request.getQrCode().length() == 18) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:MM:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         QrCode qrCode = new QrCode();
         qrCode.setQrCode(request.getQrCode());
         qrCode.setBarCode(request.getBarCode());
@@ -103,7 +103,7 @@ public class ProductController {
     String backCount = request.getBackCount();
     String remark = request.getRemark();
 
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     MakeProduct makeProduct = new MakeProduct();
     makeProduct.setMakeDate(sdf.format(new Date(System.currentTimeMillis())));
     makeProduct.setBarCode(barCode);
