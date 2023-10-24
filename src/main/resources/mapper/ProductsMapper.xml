@@ -9,8 +9,8 @@
     </resultMap>
     <update id="bind" parameterType="com.tencent.wxcloudrun.model.QrCode">
         INSERT INTO `QrCode`(`qr_code`, `bar_code`, `bind_date`, `producer`)
-        VALUE(#{qr_code}, #{bar_code}, #{bind_date}, #{producer})
-        ON DUPLICATE KEY UPDATE qr_code=#{qr_code}
+        VALUE(#{qrCode}, #{barCode}, #{bindDate}, #{producer})
+        ON DUPLICATE KEY UPDATE qr_code=#{qrCode}
     </update>
 
     <select id="getProduct" resultMap="productsMapper" parameterType="java.lang.String">
