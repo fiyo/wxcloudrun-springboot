@@ -95,7 +95,7 @@ public class ProductController {
 
   @PostMapping(value = "/api/makeproduct")
   ApiResponse makeproduct(@RequestBody MakeProductRequest request) {
-    logger.info("/api/makeproduct post request",request.getMakeCount());
+    logger.info("/api/makeproduct post request",request.getName());
     String barCode = request.getBarCode();
     String name = request.getName();
     String makeCount = request.getMakeCount();
