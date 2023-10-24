@@ -70,16 +70,21 @@ public class ProductController {
   ApiResponse bind(@RequestBody ProductRequest request) {
     logger.info("/api/bind post request",request.getBarCode());
     if(StringUtils.isEmpty(request.getBarCode()) || StringUtils.isEmpty(request.getQrCode()) ){
+
       return ApiResponse.error("条形码和一物一码均不可为空！");
     }else {
-      QrCode qrCode = new QrCode();
-      qrCode.setQrCode(request.getQrCode());
-      qrCode.setBarCode(request.getBarCode());
-      qrCode.setBindDate(request.getBindDate());
-      qrCode.setProducer(request.getProducer());
-      productService.bind(qrCode);
+      if(request.getBarCode().length() == 13 && request.getQrCode().length() == 18) {
+        QrCode qrCode = new QrCode();
+        qrCode.setQrCode(request.getQrCode());
+        qrCode.setBarCode(request.getBarCode());
+        qrCode.setBindDate(request.getBindDate());
+        qrCode.setProducer(request.getProducer());
+        productService.bind(qrCode);
 
-      return ApiResponse.ok(qrCode);
+        return ApiResponse.ok(qrCode);
+      }else{
+        return ApiResponse.error("条形码或者一物一码不正确！");
+      }
     }
   }
 
