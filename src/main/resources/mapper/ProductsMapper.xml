@@ -16,7 +16,7 @@
     <update id="saveMakeProduct" parameterType="com.tencent.wxcloudrun.model.MakeProduct">
         INSERT INTO `DayMakeProducts`(`make_date`, `bar_code`, `name`,`make_count`, `make_half_count`, `back_count`, `remark`)
         VALUE(#{makeDate}, #{barCode}, #{name}, #{makeCount}, #{makeHalfCount}, #{backCount}, #{remark})
-        ON DUPLICATE KEY UPDATE make_date=#{make_date}
+        ON DUPLICATE KEY UPDATE make_date=#{makeDate}
     </update>
 
     <select id="getProduct" resultMap="productsMapper" parameterType="java.lang.String">
