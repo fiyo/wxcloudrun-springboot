@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -74,10 +76,11 @@ public class ProductController {
       return ApiResponse.error("条形码和一物一码均不可为空！");
     }else {
       if(request.getBarCode().length() == 13 && request.getQrCode().length() == 18) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:MM:ss");
         QrCode qrCode = new QrCode();
         qrCode.setQrCode(request.getQrCode());
         qrCode.setBarCode(request.getBarCode());
-        qrCode.setBindDate(request.getBindDate());
+        qrCode.setBindDate(sdf.format(new Date(System.currentTimeMillis())));
         qrCode.setProducer(request.getProducer());
         productService.bind(qrCode);
 
