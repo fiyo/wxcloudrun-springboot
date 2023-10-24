@@ -7,6 +7,7 @@ import lombok.Data;
  */
 @Data
 public class MakeProductRequest {
+    private String makeDate;
     private String barCode;
     private String name;
     private String makeCount;
