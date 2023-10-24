@@ -6,5 +6,9 @@ import lombok.Data;
 public class ProductRequest {
 
   private String barCode;
+  private String qrCode;
+  private String bindDate;
+  private String producer;
+
 
 }

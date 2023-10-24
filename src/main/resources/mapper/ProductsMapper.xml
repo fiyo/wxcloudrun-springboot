@@ -7,6 +7,11 @@
         <result property="name" column="name"/>
         <result property="psn" column="psn"/>
     </resultMap>
+    <update id="bind" parameterType="com.tencent.wxcloudrun.model.QrCode">
+        INSERT INTO `QrCode`(`qr_code`, `bar_code`, `bind_date`, `producer`)
+        VALUE(#{qr_code}, #{bar_code}, #{bind_date}, #{producer})
+        ON DUPLICATE KEY UPDATE qr_code=#{qr_code}
+    </update>
 
     <select id="getProduct" resultMap="productsMapper" parameterType="java.lang.String">
         SELECT `bar_code`, `name`, `psn`

@@ -5,11 +5,13 @@ import com.tencent.wxcloudrun.dto.CounterRequest;
 import com.tencent.wxcloudrun.dto.ProductRequest;
 import com.tencent.wxcloudrun.model.Counter;
 import com.tencent.wxcloudrun.model.Product;
+import com.tencent.wxcloudrun.model.QrCode;
 import com.tencent.wxcloudrun.service.CounterService;
 import com.tencent.wxcloudrun.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -56,6 +58,29 @@ public class ProductController {
     Optional<Product> product = productService.getProduct(request.getBarCode());
 
     return ApiResponse.ok(product);
+  }
+
+
+  /**
+   * 绑定产品条形码和一物一码
+   * @param request
+   * @return
+   */
+  @PostMapping(value = "/api/bind")
+  ApiResponse bind(@RequestBody ProductRequest request) {
+    logger.info("/api/bind post request",request.getBarCode());
+    if(StringUtils.isEmpty(request.getBarCode()) || StringUtils.isEmpty(request.getQrCode()) ){
+      return ApiResponse.error("条形码和一物一码均不可为空！");
+    }else {
+      QrCode qrCode = new QrCode();
+      qrCode.setQrCode(request.getQrCode());
+      qrCode.setBarCode(request.getBarCode());
+      qrCode.setBindDate(request.getBindDate());
+      qrCode.setProducer(request.getProducer());
+      productService.bind(qrCode);
+
+      return ApiResponse.ok(qrCode);
+    }
   }
 
   

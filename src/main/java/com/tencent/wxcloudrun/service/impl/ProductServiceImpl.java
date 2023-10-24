@@ -4,6 +4,7 @@ import com.tencent.wxcloudrun.dao.CountersMapper;
 import com.tencent.wxcloudrun.dao.ProductsMapper;
 import com.tencent.wxcloudrun.model.Counter;
 import com.tencent.wxcloudrun.model.Product;
+import com.tencent.wxcloudrun.model.QrCode;
 import com.tencent.wxcloudrun.service.CounterService;
 import com.tencent.wxcloudrun.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,10 @@ public class ProductServiceImpl implements ProductService {
   @Override
   public List<Product> getList() {
     return productsMapper.getList();
+  }
+
+  @Override
+  public void bind(QrCode qrCode) {
+    productsMapper.bind(qrCode);
   }
 }
