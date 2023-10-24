@@ -10,13 +10,13 @@
     <update id="bind" parameterType="com.tencent.wxcloudrun.model.QrCode">
         INSERT INTO `QrCode`(`qr_code`, `bar_code`, `bind_date`, `producer`)
         VALUE(#{qrCode}, #{barCode}, #{bindDate}, #{producer})
-        ON DUPLICATE KEY UPDATE qr_code=#{qrCode}
+        ON DUPLICATE KEY UPDATE bar_code=#{barCode},producer=#{producer},bind_date=#{bindDate}
     </update>
 
     <update id="saveMakeProduct" parameterType="com.tencent.wxcloudrun.model.MakeProduct">
         INSERT INTO `DayMakeProducts`(`make_date`, `bar_code`, `name`,`make_count`, `make_half_count`, `back_count`, `remark`)
         VALUE(#{makeDate}, #{barCode}, #{name}, #{makeCount}, #{makeHalfCount}, #{backCount}, #{remark})
-        ON DUPLICATE KEY UPDATE make_date=#{makeDate}
+        ON DUPLICATE KEY UPDATE make_count=#{makeCount},make_half_count=#{makeHalfCount},back_count=#{backCount},remark=#{remark}
     </update>
 
     <select id="getProduct" resultMap="productsMapper" parameterType="java.lang.String">
