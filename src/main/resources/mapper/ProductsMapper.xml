@@ -6,6 +6,11 @@
         <id property="barCode" column="bar_code"/>
         <result property="name" column="name"/>
         <result property="psn" column="psn"/>
+        <result property="makeCount" column="make_count"/>
+        <result property="makeHalfCount" column="make_half_count"/>
+        <result property="backCount" column="back_count"/>
+        <result property="remark" column="remark"/>
+        <result property="makeDate" column="make_date"/>
     </resultMap>
     <update id="bind" parameterType="com.tencent.wxcloudrun.model.QrCode">
         INSERT INTO `QrCode`(`qr_code`, `bar_code`, `bind_date`, `producer`)
@@ -20,7 +25,10 @@
     </update>
 
     <select id="getProduct" resultMap="productsMapper" parameterType="java.lang.String">
-        SELECT p.`bar_code` as bar_code, p.`name` as name, p.`psn` as psn,d.`make_count` as make_count,d.`make_half_count` as make_half_count,d.`back_count` as back_count,d.`remark` as remark,d.make_date as make_date
+        SELECT
+        p.`bar_code` as bar_code, p.`name` as name, p.`psn` as psn,
+        d.`make_count` as make_count,d.`make_half_count` as make_half_count,
+        d.`back_count` as back_count,d.`remark` as remark,d.`make_date` as make_date
         FROM Products p
         left join DayMakeProducts d on d.bar_code = p.bar_code and d.make_date = (select max(make_date) from DayMakeProducts where bar_code=#{barCode})
         WHERE p.bar_code = #{barCode}
