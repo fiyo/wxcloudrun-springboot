@@ -20,9 +20,10 @@
     </update>
 
     <select id="getProduct" resultMap="productsMapper" parameterType="java.lang.String">
-        SELECT `bar_code`, `name`, `psn`
-        FROM Products
-        WHERE bar_code = #{id}
+        SELECT p.`bar_code` as bar_code, p.`name` as name, p.`psn` as psn,d.`make_count` as make_count,d.`make_half_count` as make_half_count,d.`back_count` as back_count,d.`remark` as remark,d.make_date as make_date
+        FROM Products p
+        left join DayMakeProducts d on d.bar_code = p.bar_code and d.make_date = (select max(make_date) from DayMakeProducts where bar_code=#{barCode})
+        WHERE p.bar_code = #{barCode}
     </select>
 
     <select id="getList" resultType="com.tencent.wxcloudrun.model.Product">

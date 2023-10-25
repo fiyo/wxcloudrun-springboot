@@ -12,7 +12,7 @@ public interface ProductService {
 
   List<Product> getList();
 
-  Optional<Product> getProduct(String id);
+  Optional<Product> getProduct(String barCode);
 
   void bind(QrCode qrCode);
 

@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper
 public interface ProductsMapper {
 
-  Product getProduct(@Param("id") String id);
+  Product getProduct(@Param("barCode") String barCode);
 
   List<Product> getList();
 

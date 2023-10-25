@@ -11,6 +11,8 @@ import com.tencent.wxcloudrun.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,8 +26,9 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
-  public Optional<Product> getProduct(String id) {
-    return Optional.ofNullable(productsMapper.getProduct(id));
+  public Optional<Product> getProduct(String barCode) {
+    return Optional.ofNullable(productsMapper.getProduct(barCode)
+    );
   }
 
   @Override
