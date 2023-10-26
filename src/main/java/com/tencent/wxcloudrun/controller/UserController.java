@@ -70,6 +70,7 @@ public class UserController {
         User user = new User();
         user.setUserName(request.getUserName());
         user.setId(request.getId());
+        user.setLogined("0");
         userService.register(user);
         return ApiResponse.ok(user);
     }
