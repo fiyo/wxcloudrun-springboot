@@ -44,8 +44,8 @@ public class ProductController {
    * 产品列表
    * @return API response json
    */
-  @GetMapping(value = "/api/list")
-  ApiResponse get() {
+  @PostMapping(value = "/api/list")
+  ApiResponse getList() {
     logger.info("/api/product list get request");
     List<Product> list = productService.getList();
     return ApiResponse.ok(list);
