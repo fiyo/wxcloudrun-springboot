@@ -20,7 +20,7 @@ public class DayMakeProductServiceImpl  implements DayMakeProductService {
 
 
   @Override
-  public List<MakeProduct> getList() {
-    return dayMakeProductsMapper.getList();
+  public List<MakeProduct> getMakeList() {
+    return dayMakeProductsMapper.getMakeList();
   }
 }

@@ -11,6 +11,6 @@ import java.util.List;
 @Mapper
 public interface DayMakeProductsMapper {
 
-  List<MakeProduct> getList();
+  List<MakeProduct> getMakeList();
 
 }

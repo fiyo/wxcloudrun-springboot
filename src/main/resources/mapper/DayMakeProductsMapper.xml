@@ -12,7 +12,7 @@
         <result property="makeDate" column="make_date"/>
     </resultMap>
 
-    <select id="getList" resultType="com.tencent.wxcloudrun.model.MakeProduct">
+    <select id="getMakeList" resultType="com.tencent.wxcloudrun.model.MakeProduct">
         SELECT
         t1.`make_date` as make_date,
         t1.`bar_code` as bar_code,

@@ -41,9 +41,9 @@ public class MakeProductController {
    * @return API response json
    */
   @PostMapping(value = "/api/makelist")
-  ApiResponse getList(@RequestBody ProductRequest request) {
+  ApiResponse getMakeList(@RequestBody ProductRequest request) {
     logger.info("/api/makelist get request");
-    List<MakeProduct> list = dayMakeProductService.getList();
+    List<MakeProduct> list = dayMakeProductService.getMakeList();
     return ApiResponse.ok(list);
   }
 

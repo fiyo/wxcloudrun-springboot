@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface DayMakeProductService {
 
-  List<MakeProduct> getList();
+  List<MakeProduct> getMakeList();
 
 
 }
