@@ -12,7 +12,7 @@
     <update id="register" parameterType="com.tencent.wxcloudrun.model.User">
         INSERT INTO `Users`(`id`, `user_name`, `logined`, `create_date`)
         VALUE(#{id}, #{userName}, #{logined}, now())
-        ON DUPLICATE KEY UPDATE user_name=#{userName},logined=#{logined},create_date=now()
+        ON DUPLICATE KEY UPDATE user_name=#{userName},create_date=now()
     </update>
 
     <select id="getUser" resultMap="usersMapper" parameterType="java.lang.String">
