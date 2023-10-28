@@ -9,6 +9,7 @@ import com.tencent.wxcloudrun.model.MakeProduct;
 import com.tencent.wxcloudrun.model.Product;
 import com.tencent.wxcloudrun.model.QrCode;
 import com.tencent.wxcloudrun.service.CounterService;
+import com.tencent.wxcloudrun.service.DayMakeProductService;
 import com.tencent.wxcloudrun.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +47,7 @@ public class ProductController {
    */
   @PostMapping(value = "/api/list")
   ApiResponse getList(@RequestBody ProductRequest request) {
-    logger.info("/api/product list get request");
+    logger.info("/api/list get request");
     List<Product> list = productService.getList();
     return ApiResponse.ok(list);
   }

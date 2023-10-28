@@ -1,6 +1,7 @@
 package com.tencent.wxcloudrun.service.impl;
 
 import com.tencent.wxcloudrun.dao.CountersMapper;
+import com.tencent.wxcloudrun.dao.DayMakeProductsMapper;
 import com.tencent.wxcloudrun.dao.ProductsMapper;
 import com.tencent.wxcloudrun.model.Counter;
 import com.tencent.wxcloudrun.model.MakeProduct;
