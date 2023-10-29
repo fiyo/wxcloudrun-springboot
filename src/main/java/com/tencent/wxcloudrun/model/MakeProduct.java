@@ -10,11 +10,11 @@ import java.io.Serializable;
  */
 @Data
 public class MakeProduct  implements Serializable {
-    private String makeDate;
-    private String barCode;
+    private String make_Date;
+    private String bar_code;
     private String name;
-    private String makeCount;
-    private String makeHalfCount;
-    private String backCount;
+    private String make_count;
+    private String make_half_count;
+    private String back_count;
     private String remark;
 }

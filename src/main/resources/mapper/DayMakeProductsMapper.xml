@@ -3,13 +3,13 @@
 <mapper namespace="com.tencent.wxcloudrun.dao.DayMakeProductsMapper">
 
     <resultMap id="DayMakeProductsMapper" type="com.tencent.wxcloudrun.model.MakeProduct">
-        <id property="barCode" column="bar_code"/>
+        <id property="bar_code" column="bar_code"/>
         <result property="name" column="name"/>
-        <result property="makeCount" column="make_count"/>
-        <result property="makeHalfCount" column="make_half_count"/>
-        <result property="backCount" column="back_count"/>
+        <result property="make_count" column="make_count"/>
+        <result property="make_half_count" column="make_half_count"/>
+        <result property="back_count" column="back_count"/>
         <result property="remark" column="remark"/>
-        <result property="makeDate" column="make_date"/>
+        <result property="make_date" column="make_date"/>
     </resultMap>
 
     <select id="getMakeList" resultType="com.tencent.wxcloudrun.model.MakeProduct">
