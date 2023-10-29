@@ -11,6 +11,10 @@ import java.util.List;
 @Mapper
 public interface DayMakeProductsMapper {
 
+  /**
+   * 返回最新盘点列表
+   * @return
+   */
   List<MakeProduct> getMakeList();
 
 }

@@ -6,6 +6,10 @@ import java.util.List;
 
 public interface DayMakeProductService {
 
+  /**
+   * 返回最新盘点列表
+   * @return
+   */
   List<MakeProduct> getMakeList();
 
 
