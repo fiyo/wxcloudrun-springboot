@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 @Data
 public class MakeProduct  implements Serializable {
-    private String make_Date;
+    private String make_date;
     private String bar_code;
     private String name;
     private String make_count;
