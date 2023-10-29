@@ -107,12 +107,12 @@ public class ProductController {
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     MakeProduct makeProduct = new MakeProduct();
-    makeProduct.setMakeDate(sdf.format(new Date(System.currentTimeMillis())));
-    makeProduct.setBarCode(barCode);
+    makeProduct.setMake_date(sdf.format(new Date(System.currentTimeMillis())));
+    makeProduct.setBar_code(barCode);
     makeProduct.setName(name);
-    makeProduct.setMakeCount(makeCount);
-    makeProduct.setMakeHalfCount(makeHalfCount);
-    makeProduct.setBackCount(backCount);
+    makeProduct.setMake_count(makeCount);
+    makeProduct.setMake_half_count(makeHalfCount);
+    makeProduct.setBack_count(backCount);
     makeProduct.setRemark(remark);
     productService.saveMakeProduct(makeProduct);
 
