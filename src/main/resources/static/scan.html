@@ -139,6 +139,8 @@
       if (res && res.data !== undefined) {
         //$(".result").html(res.data);
         document.getElementById('product').textContent = res.data.name + " ("+res.data.psn +")，此产品是正品。";
+      }else{
+        document.getElementById('product').textContent = "未查到此产品信息。";
       }
     });
   }
