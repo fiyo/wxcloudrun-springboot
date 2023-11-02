@@ -30,5 +30,4 @@
         ) t2 ON t1.bar_code = t2.bar_code AND t1.make_date = t2.max_make_date) t
     </select>
 
-
 </mapper>
