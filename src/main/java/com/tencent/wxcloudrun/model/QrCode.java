@@ -6,7 +6,8 @@ import java.io.Serializable;
 
 @Data
 public class QrCode implements Serializable {
-
+  private String name;
+  private String psn;
   private String qrCode;
   private String barCode;
   private String bindDate;

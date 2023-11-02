@@ -3,8 +3,9 @@
 <mapper namespace="com.tencent.wxcloudrun.dao.QrCodeMapper">
 
     <resultMap id="QrCodeMapper" type="com.tencent.wxcloudrun.model.QrCode">
-        <id property="barCode" column="bar_code"/>
-        <result property="qrCode" column="qr_code"/>
+        <id property="qrCode" column="qrCode"/>
+        <result property="name" column="name"/>
+        <result property="psn" column="psn"/>
         <result property="barCode" column="bar_code"/>
         <result property="bindDate" column="bind_date"/>
         <result property="producer" column="producer"/>
@@ -12,8 +13,9 @@
 
     <select id="getQrCode" resultMap="QrCodeMapper" parameterType="java.lang.String">
         SELECT
-        qr_code, bar_code, bind_date, producer
-        FROM QrCode
+        p.NAME as name,p.psn as psn ,qr_code, q.bar_code as bar_code, bind_date, producer
+        FROM QrCode q
+        inner join Products p on q.bar_code = p.bar_code
         WHERE qr_code = #{qrCode}
     </select>
 
