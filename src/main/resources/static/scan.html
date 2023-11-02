@@ -138,7 +138,7 @@
     }).done(function (res) {
       if (res && res.data !== undefined) {
         //$(".result").html(res.data);
-        document.getElementById('product').textContent = "产品条形码："+res.data.barCode + "  此产品是正品。";
+        document.getElementById('product').textContent = res.data.name + " ("+res.data.psn +")，此产品是正品。";
       }
     });
   }
