@@ -21,13 +21,13 @@
 <main class="wrapper" style="padding-top:2em">
 
     <section class="container" id="demo-content">
-        <h1 class="title">扫描防伪码</h1>
+        <h1 class="title">云上山溪防伪验证</h1>
 
         <p>
-            <a class="button-small button-outline" href="./index.html">首页 🏡</a>
+            <a class="button-small button-outline" href="https://yunshangshanxi.com/index.html">首页 🏡</a>
         </p>
 
-        <p>扫描云上山溪产品防伪码验真伪</p>
+        <p>扫描产品防伪码可验证产品真伪，请认准防伪标签。</p>
 
         <div>
             <a class="button" id="startButton">扫描防伪码</a>
@@ -52,7 +52,7 @@
 
     <footer class="footer">
         <section class="container">
-            <p>云上山溪防伪验证</p>
+            <p>云上山溪防伪验证，自2024年1月1日开始全面接入防伪认证。请认准云上山溪防伪标签。</p>
         </section>
     </footer>
 
@@ -145,24 +145,7 @@
     });
   }
 
-  function post(URL, PARAMS) {
-    var httpRequest = new XMLHttpRequest();//第一步：创建需要的对象
-    httpRequest.open('POST', URL, true); //第二步：打开连接/***发送json格式文件必须设置请求头 ；如下 - */
-    httpRequest.setRequestHeader("Content-type","application/json");//设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）var obj = { name: 'zhansgan', age: 18 };
-    httpRequest.send(JSON.stringify(PARAMS));//发送请求 将json写入send中
-    /**
-     * 获取数据后的处理程序
-     */
-    httpRequest.onreadystatechange = function () {//请求后的回调接口，可将请求成功后要执行的程序写在其中
-        if (httpRequest.readyState == 4 && httpRequest.status == 200) {//验证请求是否发送成功
-            var json = httpRequest.responseText;//获取到服务端返回的数据
-            console.log(json);
-            document.getElementById('product').textContent = json;
-        }else{
-          document.getElementById('product').textContent = httpRequest.readyState + " " + httpRequest.status;
-        }
-    };
-  }
+
   </script>
 
 </body>
