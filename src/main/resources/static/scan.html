@@ -101,8 +101,8 @@
                 let qrCode = result.text;
                 //set(result.text)
                 document.getElementById('result').textContent = qrCode
-                post("https://springboot-ef1p-76377-5-1308372560.sh.run.tcloudbase.com/api/qrcode",{"qrCode": "\""+qrCode+"\""})
-
+                //post("https://springboot-ef1p-76377-5-1308372560.sh.run.tcloudbase.com/api/qrcode",{"qrCode": "\""+qrCode+"\""})
+                set(qrCode);
                 codeReader.reset()
               }
               if (err && !(err instanceof ZXing.NotFoundException)) {
