@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.tencent.wxcloudrun.dao.QrCodeMapper">
 
-    <resultMap id="productsMapper" type="com.tencent.wxcloudrun.model.QrCode">
+    <resultMap id="QrCodeMapper" type="com.tencent.wxcloudrun.model.QrCode">
         <id property="barCode" column="bar_code"/>
         <result property="qrCode" column="qr_code"/>
         <result property="barCode" column="bar_code"/>
@@ -10,7 +10,7 @@
         <result property="producer" column="producer"/>
     </resultMap>
 
-    <select id="getQrCode" resultMap="productsMapper" parameterType="java.lang.String">
+    <select id="getQrCode" resultMap="QrCodeMapper" parameterType="java.lang.String">
         SELECT
         qr_code, bar_code, bind_date, producer
         FROM QrCode
