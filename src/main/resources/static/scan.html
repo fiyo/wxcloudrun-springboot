@@ -27,15 +27,15 @@
             <a class="button-small button-outline" href="./index.html">首页 🏡</a>
         </p>
 
-        <p>扫描产品防伪码验真伪</p>
+        <p>扫描云上山溪产品防伪码验真伪</p>
 
         <div>
-            <a class="button" id="startButton">扫描</a>
-            <a class="button" id="resetButton">重置</a>
+            <a class="button" id="startButton">扫描防伪码</a>
+            <a class="button" id="resetButton" style="display: none;">重置</a>
         </div>
 
         <div>
-            <video id="video" width="300" height="200" style="border: 1px solid gray"></video>
+            <video id="video" width="100%" height="200" style="border: 0px solid gray"></video>
         </div>
 
         <div id="sourceSelectPanel" style="display:none">
@@ -44,9 +44,10 @@
             </select>
         </div>
 
-        <label>结果:</label>
+        <label>防伪码:</label>
         <pre><code id="result"></code></pre>
-
+        <label>产品信息:</label>
+        <pre><code id="product"></code></pre>
     </section>
 
     <footer class="footer">
@@ -56,6 +57,9 @@
     </footer>
 
 </main>
+<script src="https://mat1.gtimg.com/www/asset/lib/jquery/jquery/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="https://unpkg.com/@zxing/library@latest/umd/index.min.js"></script>
 <script type="text/javascript">
@@ -70,9 +74,12 @@
           if (videoInputDevices.length >= 1) {
             videoInputDevices.forEach((element) => {
               const sourceOption = document.createElement('option')
-              sourceOption.text = element.deviceId+"|"+element.label
+              sourceOption.text = element.label
               sourceOption.value = element.deviceId
-              sourceOption.selected = "selected"
+              if(element.label.indexOf("facing back") != -1){
+                sourceOption.selected = "selected"
+                selectedDeviceId = element.deviceId
+              }
               sourceSelect.appendChild(sourceOption)
             })
 
@@ -80,15 +87,20 @@
               selectedDeviceId = sourceSelect.value;
             };
 
-            const sourceSelectPanel = document.getElementById('sourceSelectPanel')
-            sourceSelectPanel.style.display = 'block'
+            // const sourceSelectPanel = document.getElementById('sourceSelectPanel')
+            // sourceSelectPanel.style.display = 'block'
           }
 
           document.getElementById('startButton').addEventListener('click', () => {
             codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
               if (result) {
                 console.log(result)
-                document.getElementById('result').textContent = result.text
+                let qrCode = result.text;
+                //set(result.text)
+                document.getElementById('result').textContent = qrCode
+                post("https://springboot-ef1p-76377-5-1308372560.sh.run.tcloudbase.com/api/qrcode",{"qrCode": "\""+qrCode+"\""})
+
+                codeReader.reset()
               }
               if (err && !(err instanceof ZXing.NotFoundException)) {
                 console.error(err)
@@ -109,6 +121,43 @@
           console.error(err)
         })
     })
+
+
+
+    function set(qrCode) {
+    $.ajax("https://springboot-ef1p-76377-5-1308372560.sh.run.tcloudbase.com/api/qrcode", {
+      method: "POST",
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      data: JSON.stringify({
+        qrCode: qrCode,
+      }),
+    }).done(function (res) {
+      if (res && res.data !== undefined) {
+        //$(".result").html(res.data);
+        document.getElementById('product').textContent = res.data;
+      }
+    });
+  }
+
+  function post(URL, PARAMS) {
+    var httpRequest = new XMLHttpRequest();//第一步：创建需要的对象
+    httpRequest.open('POST', URL, true); //第二步：打开连接/***发送json格式文件必须设置请求头 ；如下 - */
+    httpRequest.setRequestHeader("Content-type","application/json");//设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）var obj = { name: 'zhansgan', age: 18 };
+    httpRequest.send(JSON.stringify(PARAMS));//发送请求 将json写入send中
+    /**
+     * 获取数据后的处理程序
+     */
+    httpRequest.onreadystatechange = function () {//请求后的回调接口，可将请求成功后要执行的程序写在其中
+        if (httpRequest.readyState == 4 && httpRequest.status == 200) {//验证请求是否发送成功
+            var json = httpRequest.responseText;//获取到服务端返回的数据
+            console.log(json);
+            document.getElementById('product').textContent = json;
+        }else{
+          document.getElementById('product').textContent = httpRequest.readyState + " " + httpRequest.status;
+        }
+    };
+  }
   </script>
 
 </body>
