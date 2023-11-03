@@ -104,7 +104,7 @@
                 console.log(result)
                 let qrCode = result.text;
                 //set(result.text)
-                document.getElementById('result').textContent = qrCode
+                document.getElementById('result').textContent = "防伪码：" + qrCode
                 //post("https://springboot-ef1p-76377-5-1308372560.sh.run.tcloudbase.com/api/qrcode",{"qrCode": "\""+qrCode+"\""})
                 set(qrCode);
                 codeReader.reset()
