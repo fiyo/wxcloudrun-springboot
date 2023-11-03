@@ -48,7 +48,6 @@ public class QrCodeController {
     logger.info("/api/qrcode post request",request.getQrCode());
 
     Optional<QrCode> qrCode = qrCodeService.getQrCode(request.getQrCode());
-    logger.info("产品条形码",qrCode.get().getBarCode());
     return ApiResponse.ok(qrCode);
   }
   
