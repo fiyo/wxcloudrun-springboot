@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="ZXing for JS">
+    <meta name="author" content="Jack">
 
     <title>云上山溪 - 防伪验证</title>
 
@@ -29,10 +29,6 @@
             <a class="button-small button-outline" href="https://yunshangshanxi.com/index.html">🏡 返回公司网站</a>
         </p>
 <!--        <p>扫描产品防伪码可验证产品真伪，请认准防伪标签。</p>-->
-        <div style="width:100%;text-align:center;">
-            <a class="button" id="startButton">扫描防伪码</a>
-            <a class="button" id="resetButton" style="display: none;">重置</a>
-        </div>
 
         <div>
             <video id="video" width="100%" height="100" style="border: 0px solid gray"></video>
@@ -42,6 +38,10 @@
             <label for="sourceSelect">选择摄像头:</label>
             <select id="sourceSelect" style="max-width:400px">
             </select>
+        </div>
+        <div style="width:100%;text-align:center;">
+            <a class="button" id="startButton">扫描防伪码</a>
+            <a class="button" id="resetButton" style="display: none;">重置</a>
         </div>
 
 <!--        <label>防伪码:</label>-->
@@ -80,7 +80,7 @@
               const sourceOption = document.createElement('option')
 
               sourceOption.value = element.deviceId
-              if(element.label.indexOf("facing back") != -1){
+              if(element.label.indexOf("back") != -1){
                 sourceOption.text = "后置"
                 sourceOption.selected = "selected"
                 selectedDeviceId = element.deviceId
