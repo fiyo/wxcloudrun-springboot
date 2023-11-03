@@ -142,7 +142,7 @@
           }),
         }).done(function (res) {
           document.getElementById('product').textContent = "未查到此产品信息。";
-
+          document.getElementById('productResult').textContent ="";
           if (res && res.data !== undefined) {
             document.getElementById('product').textContent = res.data.name + " ("+res.data.psn +")";
             document.getElementById('productResult').textContent = "此产品是正品，请放心使用。";
