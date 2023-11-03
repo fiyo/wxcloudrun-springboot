@@ -49,6 +49,7 @@
         <label>验证结果:</label>
         <pre><code id="result"></code></pre>
         <pre><code id="product"></code></pre>
+        <pre><code id="productResult"></code></pre>
     </section>
 
     <footer class="footer">
@@ -143,7 +144,8 @@
           document.getElementById('product').textContent = "未查到此产品信息。";
 
           if (res && res.data !== undefined) {
-            document.getElementById('product').textContent = res.data.name + " ("+res.data.psn +")，此产品是正品，请放心使用。";
+            document.getElementById('product').textContent = res.data.name + " ("+res.data.psn +")";
+            document.getElementById('productResult').textContent = "此产品是正品，请放心使用。";
           }
         });
     }
