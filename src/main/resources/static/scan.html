@@ -26,7 +26,7 @@
         <h3 class="title">云上山溪防伪验证</h3>
 
         <p>
-            <a class="button-small button-outline" href="https://yunshangshanxi.com/index.html">首页 🏡</a>
+            <a class="button-small button-outline" href="https://yunshangshanxi.com/index.html">🏡 首页</a>
         </p>
 
         <p>扫描产品防伪码可验证产品真伪，请认准防伪标签。</p>
@@ -134,22 +134,20 @@
 
 
     function set(qrCode) {
-    $.ajax("https://springboot-ef1p-76377-5-1308372560.sh.run.tcloudbase.com/api/qrcode", {
-      method: "POST",
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      data: JSON.stringify({
-        qrCode: qrCode,
-      }),
-    }).done(function (res) {
-      if (res && res.data !== undefined) {
-        //$(".result").html(res.data);
-        document.getElementById('product').textContent = res.data.name + " ("+res.data.psn +")，此产品是正品。";
-      }else{
-        document.getElementById('product').textContent = "未查到此产品信息。";
-      }
-    });
-  }
+        $.ajax("https://springboot-ef1p-76377-5-1308372560.sh.run.tcloudbase.com/api/qrcode", {
+          method: "POST",
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          data: JSON.stringify({
+            qrCode: qrCode,
+          }),
+        }).done(function (res) {
+          document.getElementById('product').textContent = "未查到此产品信息。";
+          if (res && res.data !== undefined) {
+            document.getElementById('product').textContent = res.data.name + " ("+res.data.psn +")，此产品是正品。";
+          }
+        });
+    }
 
 
   </script>
